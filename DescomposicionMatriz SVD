@@ -1,0 +1,16 @@
+import numpy as np
+# Crear una matriz de ejemplo 2x3
+datos = np.array([[1, 2, 3], [4, 5, 6]])
+# Aplicar SVD
+#U: Matriz unitaria izquierda. Contiene los vectores singulares izquierdos de la matriz original.
+#S: Vector que contiene los valores singulares de la matriz. Los valores singulares son números no negativos que representan la magnitud de las transformaciones aplicadas por la SVD.
+#VT: Matriz unitaria derecha transpuesta. Contiene los vectores singulares derechos de la matriz original.
+U, S, VT = np.linalg.svd(datos)
+# Imprimir las matrices resultantes
+print("Matriz Unitaria Izquierda:\n", U)
+print("\nMatriz Sigma:\n", np.diag(S))
+print("\nMatriz V^T:\n", VT)
+# Reducción de dimensionalidad a dos dimensiones
+datos_reducidos = U[:, :2] @ np.diag(S[:2]) @ VT[:2, :]
+# Imprimir datos reducidos
+print("\nDatos reducidos:\n", datos_reducidos)
